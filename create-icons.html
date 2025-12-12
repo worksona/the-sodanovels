@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate PWA Icons</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 2rem;
+      text-align: center;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin: 1rem;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>PWA Icon Generator</h1>
+  <p>Click the buttons to download the icons</p>
+  
+  <div>
+    <canvas id="canvas192" width="192" height="192"></canvas>
+    <canvas id="canvas512" width="512" height="512"></canvas>
+  </div>
+  
+  <div>
+    <button onclick="downloadIcon(192)">Download 192x192</button>
+    <button onclick="downloadIcon(512)">Download 512x512</button>
+  </div>
+
+  <script>
+    function createIcon(size) {
+      const canvas = document.getElementById('canvas' + size);
+      const ctx = canvas.getContext('2d');
+      
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#ea580c');
+      gradient.addColorStop(1, '#c2410c');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size, size);
+      
+      // Text
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      
+      // sodanovels text
+      ctx.font = `italic bold ${size * 0.15}px system-ui, sans-serif`;
+      ctx.fillText('sodanovels', size / 2, size / 2 - size * 0.1);
+      
+      // Audio icon (simplified headphones/speaker)
+      ctx.font = `${size * 0.3}px Arial`;
+      ctx.fillText('🎧', size / 2, size / 2 + size * 0.15);
+    }
+    
+    function downloadIcon(size) {
+      const canvas = document.getElementById('canvas' + size);
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `icon-${size}.png`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+    }
+    
+    // Create icons on load
+    createIcon(192);
+    createIcon(512);
+  </script>
+</body>
+</html>
+

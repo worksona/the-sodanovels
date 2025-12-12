@@ -1,0 +1,52 @@
+{
+  "name": "sodanovels Audiobooks",
+  "short_name": "sodanovels",
+  "description": "Listen to The Next Listener and The Three Dots audiobooks",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#ea580c",
+  "orientation": "portrait-primary",
+  "categories": ["entertainment", "books", "audio"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "The Next Listener",
+      "short_name": "Next Listener",
+      "description": "Open The Next Listener audiobook",
+      "url": "/?book=the-next-listener",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "The Three Dots",
+      "short_name": "Three Dots",
+      "description": "Open The Three Dots audiobook",
+      "url": "/?book=the-three-dots",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}
+

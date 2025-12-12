@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Don't ignore icon files - they're needed for PWA
+!icon-*.png
+
+# Keep all audiobook files (they're needed for the app)
+!the-next-listener/
+!the-three-dots/
+!*.mp3
+!*.md
+
