@@ -351,10 +351,6 @@ class AudiobookPlayer {
   loadChapter(index) {
     if (index < 0 || index >= this.chapters.length) return;
 
-    // Save previous chapter progress before switching (if we were already on a valid chapter)
-    // Note: This might be redundant with the click handler but safe.
-    // However, if we just loaded the book, we shouldn't overwrite with 0.
-
     this.currentChapterIndex = index;
     const chapter = this.chapters[index];
 
@@ -375,8 +371,7 @@ class AudiobookPlayer {
     const audioPath = `${this.currentBook.audioBasePath}/${this.currentBook.audioFilePattern(index)}`;
 
     // Check if we're actually changing source (optimization)
-    const currentSrc = this.audioElement.getAttribute('src'); // Use getAttribute to get raw string
-    // But standardized way:
+    // Compare absolute URLs
     if (this.audioElement.src !== new URL(audioPath, document.baseURI).href) {
       this.audioElement.src = audioPath;
     }
@@ -390,6 +385,13 @@ class AudiobookPlayer {
     }
 
     this.audioElement.currentTime = savedTime;
+
+    // Force Stop on Manual Navigation
+    // We always pause when loading a new chapter manually.
+    // (Note: onAudioEnded explicitly calls play() after this for auto-advance)
+    this.isPlaying = false;
+    this.updatePlayPauseButton();
+    this.audioElement.pause();
 
     // Updates controls state (prev/next buttons)
     this.updateControls();
