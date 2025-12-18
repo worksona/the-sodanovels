@@ -66,7 +66,7 @@ body {
     align-items: center;
     justify-content: center;
   }
-  
+
   .header .container {
     gap: 0.75rem;
   }
@@ -141,6 +141,7 @@ body {
   .btn .text {
     display: none;
   }
+
   .btn {
     padding: 0.5rem;
   }
@@ -290,12 +291,31 @@ body {
   color: #262626;
 }
 
-.chapter-text h1 { font-size: 2em; }
-.chapter-text h2 { font-size: 1.5em; }
-.chapter-text h3 { font-size: 1.25em; }
-.chapter-text h4 { font-size: 1.1em; }
-.chapter-text h5 { font-size: 1em; font-weight: 600; }
-.chapter-text h6 { font-size: 0.9em; font-weight: 600; }
+.chapter-text h1 {
+  font-size: 2em;
+}
+
+.chapter-text h2 {
+  font-size: 1.5em;
+}
+
+.chapter-text h3 {
+  font-size: 1.25em;
+}
+
+.chapter-text h4 {
+  font-size: 1.1em;
+}
+
+.chapter-text h5 {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.chapter-text h6 {
+  font-size: 0.9em;
+  font-weight: 600;
+}
 
 .chapter-text strong {
   font-weight: 600;
@@ -353,6 +373,9 @@ body {
   background: #e5e5e5;
   cursor: pointer;
   margin-bottom: 0.5rem;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .progress-fill {
@@ -372,12 +395,13 @@ body {
   height: 14px;
   background: var(--color-primary);
   cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s;
+  border-radius: 50%;
+  /* Make it round typically */
+  transition: transform 0.1s;
 }
 
 .progress-bar:hover .progress-handle {
-  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 .time-display {
@@ -447,6 +471,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
   padding-top: 0.5rem;
   border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
@@ -488,12 +514,6 @@ body {
   .play-btn {
     width: 56px;
     height: 56px;
-  }
-
-  .controls-extra {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
   }
 }
 
@@ -618,6 +638,7 @@ body {
     transform: translateX(-50%) translateY(100px);
     opacity: 0;
   }
+
   to {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
@@ -717,6 +738,7 @@ body {
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -729,10 +751,9 @@ body {
     -webkit-user-select: none;
     -webkit-touch-callout: none;
   }
-  
+
   /* Hide install prompt when running as PWA */
   .install-prompt {
     display: none !important;
   }
 }
-

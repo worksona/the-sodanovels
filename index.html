@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  
+
   <!-- PWA Meta Tags -->
   <meta name="theme-color" content="#ea580c">
-  <meta name="description" content="Listen to The Next Listener and The Three Dots audiobooks - sodanovels">
+  <meta name="description" content="Listen to The Next Listener  - sodanovels">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="sodanovels">
   <meta name="mobile-web-app-capable" content="yes">
-  
+
   <!-- Manifest -->
   <link rel="manifest" href="manifest.json">
-  
+
   <!-- Icons -->
   <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
   <link rel="apple-touch-icon" href="icon-192.png">
-  
+
   <title>sodanovels Audiobooks</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <!-- Header -->
   <header class="header">
@@ -35,19 +37,30 @@
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
       </button>
-      
+
       <h1 class="logo" id="headerTitle"><span class="italic">sodanovels</span></h1>
-      
+
       <div class="header-actions">
-        <button id="switchBookBtn" class="btn btn-secondary">
-          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button id="switchBookBtn" class="btn btn-secondary" style="display: none;">
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
           </svg>
           <span class="text">Switch Book</span>
         </button>
+        <button id="installAppBtn" class="btn btn-secondary hidden">
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span class="text">Install</span>
+        </button>
         <button id="shareBtn" class="btn btn-ghost">
-          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
             <circle cx="18" cy="5" r="3"></circle>
             <circle cx="6" cy="12" r="3"></circle>
             <circle cx="18" cy="19" r="3"></circle>
@@ -97,21 +110,21 @@
     <!-- Reader Area -->
     <div class="reader">
       <div class="reader-content" id="readerContent">
-          <h1 id="chapterTitle">Select a book to begin</h1>
-          <div id="chapterText" class="chapter-text">
-            <p>Welcome to <em>sodanovels</em> Audiobooks!</p>
-            <p>Click "Switch Book" to choose between:</p>
-            <ul>
-              <li><strong>The Next Listener</strong> - A Voyager Mystery</li>
-              <li><strong>The Three Dots</strong> - A Dime Store Mystery</li>
-            </ul>
-          </div>
+        <h1 id="chapterTitle">Select a book to begin</h1>
+        <div id="chapterText" class="chapter-text">
+          <p>Welcome to <em>sodanovels</em> Audiobooks!</p>
+          <p>Click "Switch Book" to choose between:</p>
+          <ul>
+            <li><strong>The Next Listener</strong> - A Voyager Mystery</li>
+            <li><strong>The Three Dots</strong> - A Dime Store Mystery</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Audio Controls -->
       <div class="audio-controls" id="audioControls">
         <audio id="audioPlayer" preload="metadata"></audio>
-        
+
         <div class="controls-top">
           <div class="progress-bar" id="progressBar">
             <div class="progress-fill" id="progressFill"></div>
@@ -127,13 +140,15 @@
         <div class="controls-bottom">
           <div class="controls-left">
             <button id="prevChapter" class="control-btn" title="Previous Chapter">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="19 20 9 12 19 4 19 20"></polygon>
                 <line x1="5" y1="19" x2="5" y2="5"></line>
               </svg>
             </button>
             <button id="skipBackward" class="control-btn" title="Skip Backward 10s">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="11 19 2 12 11 5 11 19"></polygon>
                 <polygon points="22 19 13 12 22 5 22 19"></polygon>
               </svg>
@@ -142,10 +157,12 @@
           </div>
 
           <button id="playPause" class="control-btn play-btn">
-            <svg id="playIcon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg id="playIcon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
-            <svg id="pauseIcon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <svg id="pauseIcon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
               <line x1="10" y1="4" x2="10" y2="20"></line>
               <line x1="14" y1="4" x2="14" y2="20"></line>
             </svg>
@@ -153,14 +170,16 @@
 
           <div class="controls-right">
             <button id="skipForward" class="control-btn" title="Skip Forward 10s">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="13 19 22 12 13 5 13 19"></polygon>
                 <polygon points="2 19 11 12 2 5 2 19"></polygon>
               </svg>
               <span class="skip-label">+10</span>
             </button>
             <button id="nextChapter" class="control-btn" title="Next Chapter">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="5 4 15 12 5 20 5 4"></polygon>
                 <line x1="19" y1="5" x2="19" y2="19"></line>
               </svg>
@@ -199,26 +218,10 @@
     Link copied to clipboard!
   </div>
 
-  <!-- Install prompt -->
-  <div id="installPrompt" class="install-prompt hidden">
-    <div class="install-content">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-      </svg>
-      <p>Install sodanovels for offline listening and background playback!</p>
-      <div class="install-actions">
-        <button id="installBtn" class="btn btn-secondary">Install App</button>
-        <button id="dismissInstall" class="btn btn-ghost">Later</button>
-      </div>
-    </div>
-  </div>
-
   <!-- Scripts -->
   <script src="data.js"></script>
   <script src="player.js"></script>
-  
+
   <!-- PWA Registration -->
   <script>
     // Register service worker
@@ -227,7 +230,7 @@
         navigator.serviceWorker.register('/service-worker.js')
           .then((registration) => {
             console.log('Service Worker registered:', registration.scope);
-            
+
             // Check for updates
             registration.addEventListener('updatefound', () => {
               const newWorker = registration.installing;
@@ -248,38 +251,6 @@
       });
     }
 
-    // Handle PWA install prompt
-    let deferredPrompt;
-    const installPrompt = document.getElementById('installPrompt');
-    const installBtn = document.getElementById('installBtn');
-    const dismissBtn = document.getElementById('dismissInstall');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      
-      // Show install prompt if not already installed
-      if (!window.matchMedia('(display-mode: standalone)').matches) {
-        installPrompt.classList.remove('hidden');
-      }
-    });
-
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      
-      console.log(`Install prompt: ${outcome}`);
-      deferredPrompt = null;
-      installPrompt.classList.add('hidden');
-    });
-
-    dismissBtn.addEventListener('click', () => {
-      installPrompt.classList.add('hidden');
-      localStorage.setItem('installPromptDismissed', Date.now());
-    });
-
     // Log if running as PWA
     window.addEventListener('load', () => {
       if (window.matchMedia('(display-mode: standalone)').matches) {
@@ -294,6 +265,5 @@
     });
   </script>
 </body>
+
 </html>
-
-

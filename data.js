@@ -5,16 +5,17 @@ const AUDIOBOOKS = [
     title: 'The Next Listener',
     subtitle: 'A voyager mystery.',
     author: 'sodanovels',
-    narrator: 'AI Voice: Onyx',
+    narrator: 'AI Narrator: Nova',
     totalChapters: 16,
     // Path to markdown file (relative to index.html)
-    textFile: './the-next-listener/The Next Listener.md',
+    textFile: './the-next-listener/The-Next-Listener.md',
     // Path to audio files (chapter index will be appended)
     audioBasePath: './the-next-listener',
     audioFilePattern: (index) => `The_Next_Listener_Chapter_${index + 1}.mp3`,
     // Regex pattern to detect chapters in the markdown
     chapterRegex: /^#{1,6}\s*CHAPTER\s+/im,
   },
+  /*
   {
     id: 'the-three-dots',
     title: 'The Three Dots',
@@ -27,6 +28,7 @@ const AUDIOBOOKS = [
     audioFilePattern: (index) => `the_three_dots_chapter_${index + 1}.mp3`,
     chapterRegex: /^#{1,6}\s*CHAPTER\s+/im,
   }
+  */
 ];
 
 // Make available globally
