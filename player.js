@@ -34,6 +34,11 @@ class AudiobookPlayer {
     this.audioElement.addEventListener('pause', () => this.onPause());
     this.audioElement.addEventListener('seeking', () => this.onSeeking());
     this.audioElement.addEventListener('seeked', () => this.onSeeked());
+    this.audioElement.addEventListener('error', (e) => {
+      console.error('Audio playback error:', e);
+      // Try to recover or alert?
+      // For now just log, maybe update UI to show error state?
+    });
 
     // Control buttons
     document.getElementById('playPause').addEventListener('click', () => this.togglePlayPause());
@@ -381,7 +386,13 @@ class AudiobookPlayer {
     let savedTime = 0;
 
     if (this.progressState && this.progressState.chapters && this.progressState.chapters[index]) {
-      savedTime = this.progressState.chapters[index].currentTime || 0;
+      const saved = this.progressState.chapters[index];
+      savedTime = saved.currentTime || 0;
+
+      // If we were near the end (within 5 seconds), restart from beginning
+      if (saved.duration && (saved.duration - savedTime < 5)) {
+        savedTime = 0;
+      }
     }
 
     this.audioElement.currentTime = savedTime;

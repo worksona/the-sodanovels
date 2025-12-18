@@ -6,7 +6,7 @@ const AUDIOBOOKS = [
     subtitle: 'A voyager mystery.',
     author: 'sodanovels',
     narrator: 'AI Narrator: Nova',
-    totalChapters: 16,
+    totalChapters: 17,
     // Path to markdown file (relative to index.html)
     textFile: './the-next-listener/The-Next-Listener.md',
     // Path to audio files (chapter index will be appended)
