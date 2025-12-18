@@ -1,5 +1,5 @@
 // sodanovels PWA Service Worker
-const CACHE_NAME = 'sodanovels-v1';
+const CACHE_NAME = 'sodanovels-v2';
 const RUNTIME_CACHE = 'sodanovels-runtime';
 
 // Files to cache on install
@@ -9,13 +9,15 @@ const STATIC_CACHE_URLS = [
   '/styles.css',
   '/data.js',
   '/player.js',
-  '/manifest.json'
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png'
 ];
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
   console.log('Service Worker: Installing...');
-  
+
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
@@ -32,7 +34,7 @@ self.addEventListener('install', (event) => {
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   console.log('Service Worker: Activating...');
-  
+
   event.waitUntil(
     caches.keys()
       .then((cacheNames) => {
@@ -69,12 +71,12 @@ self.addEventListener('fetch', (event) => {
         .then((response) => {
           // Clone response before caching
           const responseClone = response.clone();
-          
+
           // Cache the audio file for offline playback
           caches.open(RUNTIME_CACHE).then((cache) => {
             cache.put(request, responseClone);
           });
-          
+
           return response;
         })
         .catch(() => {
@@ -171,7 +173,7 @@ self.addEventListener('push', (event) => {
 // Notification click handler
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  
+
   event.waitUntil(
     clients.openWindow('/')
   );
