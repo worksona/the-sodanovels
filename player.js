@@ -498,10 +498,20 @@ class AudiobookPlayer {
   }
 
   skip(seconds) {
-    this.audioElement.currentTime = Math.max(0, Math.min(
+    const newTime = Math.max(0, Math.min(
       this.audioElement.duration,
       this.audioElement.currentTime + seconds
     ));
+    this.audioElement.currentTime = newTime;
+
+    // Update visuals immediately
+    document.getElementById('currentTime').textContent = this.formatTime(newTime);
+
+    if (Number.isFinite(this.audioElement.duration) && this.audioElement.duration > 0) {
+      const percent = (newTime / this.audioElement.duration);
+      this.updateProgressVisuals(percent);
+    }
+
     this.saveProgress();
   }
 
@@ -549,6 +559,7 @@ class AudiobookPlayer {
 
   onSeeked() {
     this.isSeeking = false;
+    this.onTimeUpdate();
   }
 
   onAudioEnded() {
