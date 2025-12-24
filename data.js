@@ -15,7 +15,18 @@ const AUDIOBOOKS = [
     // Regex pattern to detect chapters in the markdown
     chapterRegex: /^#{1,6}\s*CHAPTER\s+/im,
   },
-  /*
+  {
+    id: 'double-cross',
+    title: 'Double Cross',
+    subtitle: 'The Tolnest Protocol',
+    author: 'sodanovels',
+    narrator: 'AI Narrator',
+    totalChapters: 13,
+    textFile: './double-cross/DOUBLE-CROSS-The-Tolnest-Protocol.md',
+    audioBasePath: './double-cross',
+    audioFilePattern: (index) => `Double_Cross_Chapter_${index + 1}.mp3`,
+    chapterRegex: /^#{1,6}\s*\*\*CHAPTER/im,
+  },
   {
     id: 'the-three-dots',
     title: 'The Three Dots',
@@ -28,7 +39,6 @@ const AUDIOBOOKS = [
     audioFilePattern: (index) => `the_three_dots_chapter_${index + 1}.mp3`,
     chapterRegex: /^#{1,6}\s*CHAPTER\s+/im,
   }
-  */
 ];
 
 // Make available globally

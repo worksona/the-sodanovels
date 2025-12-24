@@ -23,6 +23,7 @@
 # Keep all audiobook files (they're needed for the app)
 !the-next-listener/
 !the-three-dots/
+!double-cross/
 !*.mp3
 !*.md
 

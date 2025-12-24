@@ -73,10 +73,7 @@ class AudiobookPlayer {
     }
     document.getElementById('closeSidebar').addEventListener('click', () => this.closeSidebar());
 
-    // Book selector
-    document.getElementById('switchBookBtn').addEventListener('click', () => this.showBookSelector());
-    document.getElementById('closeBookSelector').addEventListener('click', () => this.hideBookSelector());
-    document.querySelector('.modal-overlay').addEventListener('click', () => this.hideBookSelector());
+    // Book selector removed - access books via URL only
 
     // Share button
     document.getElementById('shareBtn').addEventListener('click', () => this.shareBook());
