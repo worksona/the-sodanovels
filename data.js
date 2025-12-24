@@ -38,6 +38,18 @@ const AUDIOBOOKS = [
     audioBasePath: './the-three-dots',
     audioFilePattern: (index) => `the_three_dots_chapter_${index + 1}.mp3`,
     chapterRegex: /^#{1,6}\s*CHAPTER\s+/im,
+  },
+  {
+    id: 'the-angle',
+    title: 'The Angle',
+    subtitle: 'A geometric mystery.',
+    author: 'sodanovels',
+    narrator: 'AI Narrator',
+    totalChapters: 13,
+    textFile: './the-angle/The-Angle.md',
+    audioBasePath: './the-angle',
+    audioFilePattern: (index) => `The_Angle_Chapter_${index + 1}.mp3`,
+    chapterRegex: /^##\s*\*\*Chapter\s+/im,
   }
 ];
 
