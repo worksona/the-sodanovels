@@ -50,6 +50,18 @@ const AUDIOBOOKS = [
     audioBasePath: './the-angle',
     audioFilePattern: (index) => `The_Angle_Chapter_${index + 1}.mp3`,
     chapterRegex: /^##\s*\*\*Chapter\s+/im,
+  },
+  {
+    id: 'out-of-phase',
+    title: 'Out of Phase',
+    subtitle: 'A sci-fi noir story.',
+    author: 'sodanovels',
+    narrator: 'AI Narrator',
+    totalChapters: 13,
+    textFile: './out-of-phase/Out of Phase.md',
+    audioBasePath: './out-of-phase',
+    audioFilePattern: (index) => `Out_of_Phase_Chapter_${index + 1}.mp3`,
+    chapterRegex: /^##\s*\*\*Chapter\s+/im,
   }
 ];
 
